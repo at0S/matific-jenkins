@@ -1,0 +1,13 @@
+{
+    "cluster": "exampleservices-cluster-v1",
+    "count": 1,
+    "launchType": "FARGATE",
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": ["subnet-0ca166edb43a30a27"],
+            "securityGroups": ["sg-0c2089f0315a29a84"],
+            "assignPublicIp": "ENABLED"
+        }
+    },
+    "platformVersion": "LATEST"
+}

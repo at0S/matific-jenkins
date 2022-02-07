@@ -1,0 +1,28 @@
+{
+    "family": "kaniko",
+    "taskRoleArn": "kaniko_ecs_role",
+    "executionRoleArn": "arn:aws:iam::172173733067:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "kaniko",
+            "image": "172173733067.dkr.ecr.ap-southeast-2.amazonaws.com/kaniko-builder:executor",
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "kaniko-builder",
+                    "awslogs-region": "ap-southeast-2",
+                    "awslogs-stream-prefix": "kaniko"
+                }
+            },
+            "command": [
+                "--context", "git://github.com/at0S/django-realworld-example-app.git",
+                "--dockerfile", "Dockerfile",
+                "--destination", ":latest",
+                "--force"
+            ]
+        }],
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "512",
+    "memory": "1024"
+}
